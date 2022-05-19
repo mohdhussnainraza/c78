@@ -1,43 +1,20 @@
-var las_position_of_x, last_position_of_y;
-color ="blank";
-width_of_line = 2;
-
-canvas = document.getElementById('myCanvas');
-ctx = canvas.getContext("2d");
-
-var width = screen.width;
-new_width = screen.width - 70;
-new_height = screen.height - 300;
-    if(width < 992)
-    {
-    document.getElementById("myCanvas").width = new_width;
-    document.getElementById("myCanvas").height = new_height;
-    document.body.style.overflow = "hidden";
-    }
-
-    canvas.addEventlistener("touchstart", my_touchstart);
-
-    function my_touchstart(e)
-    {
-        console.log("my_touchstart");
-
-      color = document.getElementById("color").value;
-      width_of_line = document.getElementById("width_of_line").value;
-
-
-      last_position_of_x = e.touches[0].clientX - canvas.offsetLeft;
-      last_position_of_y = e.touches[0].clientY - canvas.offsetTop;
-    }
-    canvas.addEventListener("touchmove", my_touchmove);
+var images = ["https://i.postimg.cc/MGn9GJXw/family.jpg","https://i.postimg.cc/qqyYvVbq/grandpa.jpg", "https://i.postimg.cc/wjMnFtMX/father.jpg" , "https://i.postimg.cc/5ymDKL83/bro.jpg", "https://i.postimg.cc/JnL6wtrd/sister.jpg", "https://i.postimg.cc/bw5W5zSK/mother.jpg"];
+var names = ["Fmaily Book","Ranbir Singh", "Diljeet Singh", "Rocky Singh", "Alia Singh", "Soni Singh"];
+var i = 0;
+function update()
+{
+    i++;
+    var numbers_of_family_member_in_array = 5
+    if(i > numbers_of_family_member_in_array)
+      {
+          i = 0;
+      }
     
-
-    function my_touchmove(e)
-    {
-
-        console.log("my_touchMove");
-        current_position_of_touch_x = e.touches[0].clientY - canvas.offsetLeft;
-        current_position_of_touch_y = e.touches[0].clientY - canvas.offsetTop;
-
-
-        ctx.beginPath();
-        ctx.strokeStyle = color
+    //Debug the code to store list of images in updatedImage. Use images[i]
+    var updatedImage =images[i];
+    //Debug the code to store list of names in updatedName. Use names[i]
+    var updatedName = names[i] ;
+ 
+    document.getElementById("family_member_image").src = updatedImage;
+    document.getElementById("family_member_name").innerHTML = updatedName;
+}
